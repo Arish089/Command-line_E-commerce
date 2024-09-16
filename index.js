@@ -12,6 +12,11 @@ const products = [
     new Product(2010, 'Shirt', 89, "Fashion")
 ];
 
+const discounts = [
+    new Discount("Buy 1 Get 1 Free on Fashion items"),
+    new Discount("20% off on Electronics")
+]
+
 // Initialize cart (which will load data from cart.json if it exists)
 const cart = new Cart();
 
@@ -19,7 +24,7 @@ const commands = {
     'list-products': () => {
         console.log('Available Products:');
         products.forEach(product => {
-            console.log(`ID: ${product.id}, Name: ${product.name}, Price: $${product.price}, Category: ${product.category}`);
+            console.log(`Product ID: ${product.id}, Name: ${product.name}, Price: $${product.price}, Category: ${product.category}`);
         });
     },
     'add-to-cart': (id, quantity) => {
@@ -43,14 +48,16 @@ const commands = {
     } else {
         console.log('Product not found.');
     }
-},
+    },
     'view-cart': () => {
         cart.viewCart();
     },
-    'apply-discount': (description, percentage) => {
-        const discount = new Discount(description, parseFloat(percentage));
-        cart.applyDiscount(discount);
-        console.log(`Discount applied: ${description} (${percentage}%)`);
+    'list_discounts':()=>{
+    console.log("Available Discounts:");
+    discounts.forEach((ele)=>{
+        ele.show_discount();
+    })
+
     },
     'checkout': async () => {
         await cart.checkout();

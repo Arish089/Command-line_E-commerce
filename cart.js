@@ -66,14 +66,43 @@ class Cart {
             const { product, quantity } = this.items[id];
             const price = product.price * quantity;
             total += price;
-            console.log(`${product.name}: $${product.price} x ${quantity} = $${price}`);
+            console.log(`${product.name} - Quantity: ${quantity}, Price: $${product.price}, Total = $${price}`);
         }
-        if (this.discount) {
-            const discountAmount = (total * this.discount.percentage) / 100;
-            total -= discountAmount;
-            console.log(chalk.red(`Discount applied: ${this.discount.description} (-$${discountAmount.toFixed(2)})`));
+        console.log(chalk.green(`Total (before discounts): $${total.toFixed(2)}`));
+    }
+    async checkout() {
+        console.log(chalk.blue('Checking out...'));
+
+        let total = 0;
+        for (const id in this.items) {
+            const { product, quantity } = this.items[id];
+            let price = product.price * quantity;
+
+            // Apply 10% discount for Electronics during checkout
+            if (product.category === 'Electronics') {
+                const discountAmount = price * 0.10;
+                price -= discountAmount;
+                console.log(chalk.red(`10% off on Electronics applied for: ${product.name} (-$${discountAmount.toFixed(2)})`));
+            }
+
+            // Apply Buy 1 Get 1 for Fashion items during checkout
+            if (product.category === 'Fashion') {
+                const freeItems = Math.floor(quantity / 2); // For every 2 items, add 1 free
+                console.log(chalk.green(`Buy 1 Get 1 Free applied for Fashion item: ${product.name} (+${freeItems} free)`));
+                price = product.price * (quantity - freeItems); // Adjust price for free items
+            }
+
+            total += price;
         }
-        console.log(chalk.green(`Total: $${total.toFixed(2)}`));
+
+        console.log(chalk.green(`Total after discounts: $${total.toFixed(2)}`));
+
+        // Assuming payment is successful
+        console.log(chalk.yellow('Payment successful! Thank you for your purchase.'));
+
+        // Clear the cart after checkout
+        this.items = {};
+        this.saveCart();
     }
 }
 

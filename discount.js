@@ -1,7 +1,9 @@
 class Discount {
-    constructor(description, percentage) {
+    constructor(description) {
         this.description = description;
-        this.percentage = percentage;
+    }
+    show_discount(){
+        console.log(this.description);
     }
 }
 

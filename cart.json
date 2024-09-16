@@ -1,4 +1,32 @@
 {
-  "items": {},
+  "items": {
+    "1001": {
+      "product": {
+        "id": 1001,
+        "name": "Laptop",
+        "price": 1149,
+        "category": "Electronics"
+      },
+      "quantity": 1
+    },
+    "1003": {
+      "product": {
+        "id": 1003,
+        "name": "Smartphone",
+        "price": 599,
+        "category": "Electronics"
+      },
+      "quantity": 2
+    },
+    "2010": {
+      "product": {
+        "id": 2010,
+        "name": "Shirt",
+        "price": 89,
+        "category": "Fashion"
+      },
+      "quantity": 2
+    }
+  },
   "discount": null
 }
