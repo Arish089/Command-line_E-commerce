@@ -98,8 +98,9 @@ After conversion, you'll be checked out
 
 
 ## File Structure
-bash
-Copy code
+├── node_modules/        #contains the packages like *readLine* in this case 
+├── images/              # contains screenshots
+├── .gitignore           # contains files and folders you don't want to push to the repo  
 ├── cart.js              # Handles cart logic, discounts, and persistence
 ├── product.js           # Product class definition
 ├── discount.js          # Discount class definition
@@ -114,8 +115,6 @@ The cart contents are saved in a cart.json file so that they are available betwe
 License
 This project is licensed under the MIT License.
 
-markdown
-Copy code
 
 ### Key Sections in the `README.md`:
 
