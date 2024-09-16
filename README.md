@@ -27,13 +27,11 @@ A simple command-line shopping cart application built using Node.js. This applic
 
 2. Install dependencies:
 
-bash
 npm install
 
 ## Usage
 1. Run the application by passing commands via the command line:
 
-bash
 node index.js <command> [parameters]
 
 2. Available commands:
@@ -96,18 +94,6 @@ After conversion, you'll be checked out
 `node index.js checkout`
 ![checkout](./images/Screenshot%20(91).png)
 
-
-## File Structure
-├── node_modules/        #contains the packages like *readLine* in this case 
-├── images/              # contains screenshots
-├── .gitignore           # contains files and folders you don't want to push to the repo  
-├── cart.js              # Handles cart logic, discounts, and persistence
-├── product.js           # Product class definition
-├── discount.js          # Discount class definition
-├── currencyConverter.js # Currency conversion logic
-├── index.js             # Main application entry point
-├── cart.json            # JSON file to persist cart data
-├── README.md            # Documentation file
 
 ## Cart Persistence
 The cart contents are saved in a cart.json file so that they are available between sessions. When the application starts, the cart is automatically loaded from the cart.json file.
