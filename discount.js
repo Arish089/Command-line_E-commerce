@@ -1,6 +1,6 @@
 class Discount {
     constructor(description) {
-        this.description = description;
+        this.description = description; 
     }
     show_discount(){
         console.log(this.description);

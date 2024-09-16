@@ -1,6 +1,8 @@
 const fs = require('fs');
+const readline = require('readline-sync');
 const chalk = require('chalk');
 const path = require('path');
+const CurrencyConverter = require('./currencyConverter');
 
 class Cart {
     constructor() {
@@ -8,6 +10,7 @@ class Cart {
         this.items = {};
         this.discount = null;
         this.loadCart();
+        this.currencyConverter = new CurrencyConverter()
     }
 
     // Load the cart from the file if it exists
@@ -71,6 +74,10 @@ class Cart {
         console.log(chalk.green(`Total (before discounts): $${total.toFixed(2)}`));
     }
     async checkout() {
+        if (Object.keys(this.items).length === 0) {
+            console.log(chalk.red('Your cart is empty. Please add some items before checking out.'));
+            return; // Exit the function if the cart is empty
+        }
         console.log(chalk.blue('Checking out...'));
 
         let total = 0;
@@ -96,6 +103,13 @@ class Cart {
         }
 
         console.log(chalk.green(`Total after discounts: $${total.toFixed(2)}`));
+
+        const currencyChoice = readline.question('Would you like to convert the total to a different currency? (yes/no): ').toLowerCase();
+        if (currencyChoice === 'yes') {
+            const toCurrency = readline.question('Enter the target currency (EUR/GBP): ').toUpperCase();
+            const convertedTotal = this.currencyConverter.convert(total, 'USD', toCurrency);
+            console.log(chalk.yellow(`Total(${toCurrency}): ${convertedTotal.toFixed(2)} ${toCurrency}`));
+        }
 
         // Assuming payment is successful
         console.log(chalk.yellow('Payment successful! Thank you for your purchase.'));
