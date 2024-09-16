@@ -61,6 +61,17 @@ const commands = {
     },
     'checkout': async () => {
         await cart.checkout();
+    },
+    'help': () => {
+        console.log(`
+Available commands:
+  - list-products       : List all available products.
+  - add-to-cart <id> <quantity> : Add a product to the cart by its ID and specify the quantity.
+  - remove-item <id> <quantity> : Remove a product from the cart by its ID and specify the quantity.
+  - view-cart           : View the current items in your cart.
+  - checkout            : Proceed to checkout and view the total with discounts applied.
+  - help                : Show this help message with all available commands.
+        `);
     }
 };
 
