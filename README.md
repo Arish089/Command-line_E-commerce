@@ -23,17 +23,17 @@ A simple command-line shopping cart application built using Node.js. This applic
 1. Clone the repository or download the source code:
    
    ```git clone https://github.com/Arish089/Command-line_E-commerce```
-   
+
    ```cd shopping-cart-cli```
 
 2. Install dependencies:
 
-npm install
+`npm install`
 
 ## Usage
 1. Run the application by passing commands via the command line:
 
-node index.js <command> [parameters]
+```node index.js <command> [parameters]```
 
 2. Available commands:
 
