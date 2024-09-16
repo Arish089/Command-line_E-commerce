@@ -43,8 +43,8 @@ node index.js <command> [parameters]
 | Command           | Parameters                                    | Description                                   |
 |-------------------|-----------------------------------------------|-----------------------------------------------|
 | `list-products`   | None                                          | Lists all available products.                 |
-| `add-to-cart`     | <product-id><quantity>                        | Adds a product to the cart.                   |
-| `remove-item`     | <product-id><quantity>                        | Removes a product from the cart.              |
+| `add-to-cart`     | `product-id` `quantity`                       | Adds a product to the cart.                   |
+| `remove-item`     | `product-id` `quantity`                       | Removes a product from the cart.              |
 | `view-cart`       | None                                          | Displays the current contents of the cart.    |
 | `list_discounts`  | None                                          | Displays the discounts.                       |
 | `checkout`        | None                                          | Proceeds to checkout and applies discounts.   |
